@@ -23,57 +23,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 
-@Composable
-fun RainbowBorderCard(cardData: CardData) {
-    Box(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color.Red, Color.Yellow, Color.Green,
-                        Color.Blue, Color.Cyan, Color.Magenta
-                    ),
-                    start = Offset.Zero,
-                    end = Offset.Infinite
-                ),
-                shape = RoundedCornerShape(24.dp)
-            )
-            .padding(2.dp)
-    ) {
-        Card(
-            shape = RoundedCornerShape(20.dp),
-            elevation = CardDefaults.cardElevation(8.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Color(0xFAFDFDFD)
-            ),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier
-                    .wrapContentSize()
-            ) {
-                cardData.fields.forEach {
-                    if (it.title == "Capacity") {
 
-                        val valueBitcoin = (it.value as? Long)?.let {
-                            BigDecimal(it).divide(BigDecimal("100000000"), 8, RoundingMode.HALF_UP)
-                                .toPlainString()
-                        }
-                        CardFieldRow(title = it.title, value = "$valueBitcoin  BTC")
-                    } else if (it.title == "FirstSeen" || it.title == "UpdatedAt") {
-                        val dateConverted = it.value.toString().toLong().toInstantAndFormat()
-                        CardFieldRow(title = it.title, value = dateConverted)
-                    } else {
-                        CardFieldRow(title = it.title, value = it.value)
-
-                    }
-                }
-
-            }
-        }
-    }
-}
 
 
 @Preview(showBackground = true)

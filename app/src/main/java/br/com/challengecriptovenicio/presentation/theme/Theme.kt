@@ -1,4 +1,4 @@
-package br.com.challengecriptovenicio.presentation.ui.theme
+package br.com.challengecriptovenicio.presentation.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

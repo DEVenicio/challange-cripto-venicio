@@ -44,6 +44,22 @@ dependencies {
     //KOTLINX-DATETIME
     implementation(libs.kotlinx.datetime)
 
+    // FOUNDATION E MATERIAL (PULL REFRESH)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.foundation)
+
+    //KOIN
+    implementation(libs.koin.core)
+    implementation(libs.koin.ktor)
+    implementation(libs.koin.logger.slf4j)
+    implementation(libs.koin.androidx.compose)
+
+    //KTOR
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.gson)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
