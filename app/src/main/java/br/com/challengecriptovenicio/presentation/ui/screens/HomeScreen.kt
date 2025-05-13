@@ -32,22 +32,16 @@ fun HomeScreen(
     nodeViewModel: NodeViewModel = koinViewModel()
 ) {
     val uiState by nodeViewModel.uiState.collectAsState()
-
     var hasLoadedOnce by remember { mutableStateOf(false) }
-
     val isRefreshing = uiState is UiState.Loading && hasLoadedOnce
-
     val showCenterLoading = uiState is UiState.Loading && !hasLoadedOnce
 
-
-
-
-    val pullRefreshState =  rememberPullRefreshState(
-       refreshing = isRefreshing,
-       onRefresh = {
-           nodeViewModel.loadCards()
-    }
-   )
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = isRefreshing,
+        onRefresh = {
+            nodeViewModel.loadCards()
+        }
+    )
 
 
     Box(
@@ -69,7 +63,7 @@ fun HomeScreen(
             is UiState.Success -> {
 
                 val cards = (uiState as UiState.Success).cards
-                    LazyColumn {
+                LazyColumn {
                     items(cards) { card ->
                         RainbowBorderCard(card)
                     }
@@ -87,12 +81,10 @@ fun HomeScreen(
             }
         }
 
-            PullRefreshIndicator(
-                refreshing = isRefreshing,
-                state = pullRefreshState,
-                modifier = Modifier.align(Alignment.TopCenter)
-            )
+        PullRefreshIndicator(
+            refreshing = isRefreshing,
+            state = pullRefreshState,
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
     }
 }
-
-
